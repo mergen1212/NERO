@@ -21,6 +21,8 @@ class ResistViewModel : ViewModel() {
     val sampleImgT3 = ObservableField<Boolean>(false)
     val sampleImgT4 = ObservableField<Boolean>(false)
 
+    val isNormal = ObservableField<Boolean>(false)
+
     var connected = ObservableBoolean(true)
     var hasDevice = ObservableBoolean(BrainBitController.hasDevice)
 
@@ -38,16 +40,37 @@ class ResistViewModel : ViewModel() {
 
                 if (it.o1 < 2000000f){
                     sampleImgO1.set(true)
-                    Log.d("GGG", sampleImgO1.get().toString())
+                }else{
+                    sampleImgO1.set(false)
                 }
+
                 if (it.o2 < 2000000f){
                     sampleImgO2.set(true)
+                }else{
+                    sampleImgO2.set(false)
                 }
+
                 if (it.t3 < 2000000f){
                     sampleImgT3.set(true)
+                }else{
+                    sampleImgT3.set(false)
                 }
+
                 if (it.t4 < 2000000f){
                     sampleImgT4.set(true)
+                }else{
+                    sampleImgT4.set(false)
+                }
+
+                if (
+                    sampleImgO1.get() == true &&
+                    sampleImgO2.get() == true &&
+                    sampleImgT3.get() == true &&
+                    sampleImgT4.get() == true
+                    ){
+                    isNormal.set(true)
+                }else{
+                    isNormal.set(false)
                 }
             }
         }

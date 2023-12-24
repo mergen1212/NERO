@@ -42,10 +42,15 @@
         android:id="@+id/resistFragment"
         android:name="com.example.nero.ui.resist.ResistFragment"
         android:label="Resist Fragment"
-        tools:layout="@layout/fragment_resist" />
+        tools:layout="@layout/fragment_resist">
+        <action
+            android:id="@+id/action_resistFragment_to_emotionsFragment"
+            app:destination="@id/emotionsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/emotionsFragment"
         android:name="com.example.nero.ui.emotions.EmotionsFragment"
         android:label="Emotions Fragment"
-        tools:layout="@layout/fragment_emotions" />
+        tools:layout="@layout/fragment_emotions">
+    </fragment>
 </navigation>

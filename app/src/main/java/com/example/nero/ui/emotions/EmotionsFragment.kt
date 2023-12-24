@@ -6,7 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.anychart.AnyChart
+import com.anychart.chart.common.dataentry.DataEntry
+import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.example.nero.databinding.FragmentEmotionsBinding
+
 
 class EmotionsFragment : Fragment() {
     private lateinit var binding: FragmentEmotionsBinding
@@ -24,11 +28,11 @@ class EmotionsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupPieChart()
+
         viewModel = ViewModelProvider(this)[EmotionsViewModel::class.java]
 
-        binding.signalButton.setOnClickListener {
-            viewModel.onSignalClicked()
-        }
+        viewModel.onSignalClicked()
 
         binding.viewModel = viewModel
     }
@@ -37,5 +41,18 @@ class EmotionsFragment : Fragment() {
         super.onDestroyView()
 
         viewModel.close()
+    }
+
+    private fun setupPieChart() {
+        var pieChart = AnyChart.pie()
+        val data: MutableList<DataEntry> = ArrayList()
+        data.add(ValueDataEntry("Relaxation", 50))
+        data.add(ValueDataEntry("Attention", 50))
+        pieChart.data(data)
+
+        pieChart.title("Relaxation and Attention")
+        pieChart.legend().title().enabled(false)
+
+        binding.chart1.setChart(pieChart)
     }
 }

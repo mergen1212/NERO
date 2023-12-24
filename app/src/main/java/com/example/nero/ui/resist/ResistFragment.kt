@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.example.nero.R
 import com.example.nero.databinding.FragmentResistBinding
 import com.example.nero.neuroimpl.BrainBitController
@@ -35,6 +37,13 @@ class ResistFragment : Fragment() {
         binding.button.setOnClickListener { viewModel.onResistClicked() }
         binding.buttonCurrentReconect.setOnClickListener {
             if(BrainBitController.hasDevice) viewModel.reconnect()
+        }
+        binding.buttonStartSession.setOnClickListener {
+            if (viewModel.isNormal.get() == true){
+                findNavController().navigate(R.id.action_resistFragment_to_emotionsFragment)
+            }else{
+                Toast.makeText(requireContext(), "Resistance error", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

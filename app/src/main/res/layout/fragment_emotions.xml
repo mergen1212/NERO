@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     tools:context=".ui.emotions.EmotionsFragment">
 
     <data>
@@ -16,14 +17,6 @@
         android:layout_height="match_parent"
         android:layout_margin="5dp">
 
-        <Button
-            android:id="@+id/signalButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.started ? @string/stopButton : @string/startButton}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/calibrationProgressTextView"
@@ -31,8 +24,9 @@
             android:layout_height="wrap_content"
             android:text="@{String.valueOf(viewModel.calibrationProgress) + '%'}"
             android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/signalButton" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/relaxationTextView"
@@ -52,6 +46,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/relaxationTextView" />
 
+        <com.anychart.AnyChartView
+            android:id="@+id/chart1"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:backgroundTint="@color/ap_transparent"
+            android:paddingTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/attentionTextView" />
+
         <TextView
             android:id="@+id/relRelaxationTextView"
             android:layout_width="wrap_content"
@@ -59,7 +63,7 @@
             android:text="@{viewModel.relRelaxationText}"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/attentionTextView" />
+            app:layout_constraintTop_toBottomOf="@id/chart1" />
 
         <TextView
             android:id="@+id/relAttentionTextView"
@@ -70,50 +74,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/relRelaxationTextView" />
 
-        <TextView
-            android:id="@+id/alphaTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.alphaText}"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/relAttentionTextView" />
-
-        <TextView
-            android:id="@+id/betaTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.betaText}"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/alphaTextView" />
-
-        <TextView
-            android:id="@+id/gammaTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.gammaText}"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/betaTextView" />
-
-        <TextView
-            android:id="@+id/deltaTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.deltaText}"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/gammaTextView" />
-
-        <TextView
-            android:id="@+id/thetaTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{viewModel.thetaText}"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/deltaTextView" />
 
         <TextView
             android:id="@+id/artifactedTextView"
@@ -122,7 +82,7 @@
             android:text="@{viewModel.artifacted ? @string/artifacted : @string/not_artifacted}"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/thetaTextView" />
+            app:layout_constraintTop_toBottomOf="@id/relAttentionTextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

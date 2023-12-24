@@ -9,6 +9,10 @@
             type="com.example.nero.ui.resist.ResistViewModel" />
     </data>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
@@ -129,26 +133,19 @@
             app:layout_constraintStart_toEndOf="@+id/resist_value_T4"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-        <ImageView
-            android:id="@+id/imagePerson"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12"
-            app:srcCompat="@drawable/person" />
+
 
         <LinearLayout
+            android:id="@+id/resistImg"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="400dp"
             android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/person"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintTop_toBottomOf="@+id/textView13">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -202,6 +199,16 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/buttonStartSession"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:enabled="@{viewModel.hasDevice}"
+            android:text="@string/startSession"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/resistImg" />
+
+        <Button
             android:id="@+id/button_current_reconect"
             android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
@@ -209,7 +216,8 @@
             android:text="@{viewModel.connected ? @string/disconnect : @string/connect}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imagePerson" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonStartSession" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

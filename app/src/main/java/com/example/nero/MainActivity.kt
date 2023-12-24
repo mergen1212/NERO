@@ -2,6 +2,7 @@ package com.example.nero
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -37,11 +38,13 @@ class MainActivity : AppCompatActivity() {
 
         BrainBitController.connectionStateChanged = {
             runOnUiThread {
-                binding.txtDevState.text =
-                    if (it == SensorState.StateInRange)
-                        getString(R.string.dev_state_connected)
-                    else
-                        getString(R.string.dev_state_disconnected)
+                //binding.txtDevState.text =
+                    if (it == SensorState.StateInRange) {
+                        binding.txtDevState.text = getString(R.string.dev_state_connected)
+                    }
+                    else {
+                        binding.txtDevState.text = getString(R.string.dev_state_disconnected)
+                    }
 
                 if (it == SensorState.StateOutOfRange)
                     navController.popBackStack(R.id.menuFragment, false)
