@@ -59,7 +59,7 @@ dependencies {
 
     implementation "com.androidplot:androidplot-core:1.5.10"
 
-    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -75,5 +75,9 @@ dependencies {
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
     implementation "androidx.navigation:navigation-compose:$nav_version"
 
+    implementation "androidx.databinding:databinding-compiler:8.2.0"
+
     implementation 'com.github.AnyChart:AnyChart-Android:1.1.5'
+    //implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
 }

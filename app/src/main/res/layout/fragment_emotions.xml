@@ -48,10 +48,11 @@
 
         <com.anychart.AnyChartView
             android:id="@+id/chart1"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             android:backgroundTint="@color/ap_transparent"
             android:paddingTop="20dp"
+            app:chartData="@{viewModel.data1}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/attentionTextView" />

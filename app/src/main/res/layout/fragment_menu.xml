@@ -20,6 +20,7 @@
             android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/search"
+            android:backgroundTint="#00ABC6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,6 +41,7 @@
             android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/resist"
+            android:backgroundTint="@color/second_color"
             android:enabled="@{viewModel.connected}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +51,8 @@
             android:id="@+id/button_emotions"
             android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
-            android:text="@string/emotions"
+            android:backgroundTint="@color/main_color"
+            android:text="Начать сессию"
             android:enabled="@{viewModel.connected}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +74,7 @@
             android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:text="@string/info"
+            android:backgroundTint="@color/second_color"
             android:enabled="@{viewModel.connected}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +82,7 @@
 
         <Button
             android:id="@+id/button_current_reconect"
+            android:visibility="gone"
             android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
             android:enabled="@{viewModel.hasDevice}"

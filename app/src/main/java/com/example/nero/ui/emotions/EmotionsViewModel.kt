@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
+import com.anychart.chart.common.dataentry.DataEntry
+import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.example.nero.emotions.EmotionalController
 import com.example.nero.emotions.EmotionalMathConfig
 import com.example.nero.neuroimpl.BrainBitController
@@ -29,6 +31,13 @@ class EmotionsViewModel : ViewModel() {
 
     var relaxationNum = ObservableField(50)
     var attentionNum = ObservableField(50)
+
+    var data1 = ObservableField<MutableList<DataEntry>>(
+        mutableListOf(
+            ValueDataEntry("Relaxation", 50),
+            ValueDataEntry("Attention", 50)
+        )
+    )
 
     var alphaText = ObservableField("Alpha: Waiting for calibration...")
     var betaText = ObservableField("Beta: Waiting for calibration...")
@@ -82,10 +91,10 @@ class EmotionsViewModel : ViewModel() {
             relaxationText.set("Relaxation: " + String.format("%.2f", it.instRelaxation) + "%")
             attentionText.set("Attention: " + String.format("%.2f", it.instAttention) + "%")
 
+            relaxationNum.set(it.instRelaxation.toInt())
+            attentionNum.set(it.instAttention.toInt())
 
 
-            Log.d("cock", it.instRelaxation.toString())
-            Log.d("cock1", it.instAttention.toString())
 
             relRelaxationText.set("Rel Relaxation: " + String.format("%.2f", it.relRelaxation))
             relAttentionText.set("Rel Attention: " + String.format("%.2f", it.relAttention))

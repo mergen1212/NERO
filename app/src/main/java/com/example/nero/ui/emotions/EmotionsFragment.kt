@@ -28,7 +28,7 @@ class EmotionsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupPieChart()
+        //setupPieChart()
 
         viewModel = ViewModelProvider(this)[EmotionsViewModel::class.java]
 
@@ -53,6 +53,5 @@ class EmotionsFragment : Fragment() {
         pieChart.title("Relaxation and Attention")
         pieChart.legend().title().enabled(false)
 
-        binding.chart1.setChart(pieChart)
     }
 }
