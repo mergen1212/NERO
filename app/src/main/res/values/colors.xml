@@ -6,4 +6,7 @@
     <color name="colorDevState">#46474D</color>
     <color name="colorDevStateTitle">#FFF</color>
     <color name="colorDevStateValue">#00DE00</color>
+
+    <color name="light_blue">#00ABC6</color>
+    <color name="dark_blue">#006DA4</color>
 </resources>
