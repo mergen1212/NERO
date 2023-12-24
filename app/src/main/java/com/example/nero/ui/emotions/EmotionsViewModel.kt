@@ -6,6 +6,7 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.anychart.chart.common.dataentry.DataEntry
 import com.anychart.chart.common.dataentry.ValueDataEntry
+
 import com.example.nero.emotions.EmotionalController
 import com.example.nero.emotions.EmotionalMathConfig
 import com.example.nero.neuroimpl.BrainBitController
@@ -32,10 +33,11 @@ class EmotionsViewModel : ViewModel() {
     var relaxationNum = ObservableField(50)
     var attentionNum = ObservableField(50)
 
+
     var data1 = ObservableField<MutableList<DataEntry>>(
         mutableListOf(
-            ValueDataEntry("Relaxation", 50),
-            ValueDataEntry("Attention", 50)
+            ValueDataEntry("Relaxation", relaxationNum.get()),
+            ValueDataEntry("Attention", attentionNum.get())
         )
     )
 
@@ -94,6 +96,7 @@ class EmotionsViewModel : ViewModel() {
             relaxationNum.set(it.instRelaxation.toInt())
             attentionNum.set(it.instAttention.toInt())
 
+            updateData1()
 
 
             relRelaxationText.set("Rel Relaxation: " + String.format("%.2f", it.relRelaxation))
@@ -176,4 +179,16 @@ class EmotionsViewModel : ViewModel() {
         )
     }
     //</editor-fold>
+
+    fun updateData1() {
+        val relaxationValue = relaxationNum.get()?.toDouble() ?: 0.0
+        val attentionValue = attentionNum.get()?.toDouble() ?: 0.0
+
+        data1 = data1.set(
+            mutableListOf(
+                ValueDataEntry("Relaxation", relaxationValue),
+                ValueDataEntry("Attention", attentionValue)
+            )
+        )
+    }
 }

@@ -32,6 +32,8 @@ android {
     }
 
     packagingOptions {
+        resources.excludes.add("META-INF/*")
+
         pickFirst 'lib/x86_64/libc++_shared.so'
         pickFirst 'lib/x86_64/libfilters.so'
         pickFirst 'lib/x86/libc++_shared.so'
@@ -59,7 +61,7 @@ dependencies {
 
     implementation "com.androidplot:androidplot-core:1.5.10"
 
-    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

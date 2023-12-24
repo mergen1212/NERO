@@ -1,9 +1,11 @@
 package com.example.nero.ui.emotions
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.Observable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.anychart.AnyChart
@@ -34,6 +36,18 @@ class EmotionsFragment : Fragment() {
 
         viewModel.onSignalClicked()
 
+
+        viewModel.data1.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
+            override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
+                // Update the chart when data1 changes
+                Log.d("dfff", "sgsgsfsffsfsf")
+                val pieChart = AnyChart.pie()
+                pieChart.data(viewModel.data1.get())
+                pieChart.data(viewModel.data1.get())
+                binding.chart1.setChart(pieChart)
+            }
+        })
+
         binding.viewModel = viewModel
     }
 
@@ -42,6 +56,8 @@ class EmotionsFragment : Fragment() {
 
         viewModel.close()
     }
+
+
 
     private fun setupPieChart() {
         val pieChart = AnyChart.pie()
@@ -53,5 +69,7 @@ class EmotionsFragment : Fragment() {
         pieChart.title("Relaxation and Attention")
         pieChart.legend().title().enabled(false)
 
+        binding.chart1.setChart(pieChart)
     }
+
 }
