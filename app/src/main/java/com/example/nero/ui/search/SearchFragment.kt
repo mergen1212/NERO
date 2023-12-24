@@ -51,19 +51,21 @@ class SearchFragment : Fragment() {
             devicesListAdapter.devices[diviceNumber].inProgress = true
             devicesListAdapter.notifyItemChanged(diviceNumber)
 
-                BrainBitController.createAndConnect(devicesListAdapter.devices[diviceNumber].sInfo, onConnectionResult = {
-                    Handler(Looper.getMainLooper()).post {
-                        if(it == SensorState.StateInRange){
-                            findNavController().popBackStack(R.id.menuFragment, false)
-                        }
-                        else {
-                            Toast.makeText(requireContext(), "Device connection fail!", Toast.LENGTH_SHORT).show()
-                        }
-
-                        devicesListAdapter.devices[diviceNumber].inProgress = false
-                        devicesListAdapter.notifyItemChanged(diviceNumber)
+            BrainBitController.createAndConnect(devicesListAdapter.devices[diviceNumber].sInfo, onConnectionResult = {
+                Handler(Looper.getMainLooper()).post {
+                    if(it == SensorState.StateInRange){
+                        findNavController().popBackStack(R.id.menuFragment, false)
+                        Toast.makeText(requireContext(), "Device connected!!!", Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.action_searchFragment_to_resistFragment)
                     }
-                })
+                    else {
+                        Toast.makeText(requireContext(), "Device connection fail!", Toast.LENGTH_SHORT).show()
+                    }
+
+                    devicesListAdapter.devices[diviceNumber].inProgress = false
+                    devicesListAdapter.notifyItemChanged(diviceNumber)
+                }
+            })
         }
 
         return binding.root
@@ -79,10 +81,14 @@ class SearchFragment : Fragment() {
             }
             else
             {
-               viewModel.onSearchClicked()
+                viewModel.onSearchClicked()
             }
 
             isSearch = !isSearch
+        }
+
+        binding.sessionsButton.setOnClickListener {
+            Toast.makeText(requireContext(), "Xd((", Toast.LENGTH_SHORT).show()
         }
 
         viewModel.sensors.observe(viewLifecycleOwner){
@@ -106,11 +112,11 @@ class SearchFragment : Fragment() {
     private inline fun RecyclerView.setOnItemClickListener(crossinline listener: (position: Int) -> Unit) {
         addOnItemTouchListener(
             RecyclerItemClickListener(this,
-            object : RecyclerItemClickListener.OnItemClickListener {
-                override fun onItemClick(view: View, position: Int) {
-                    listener(position)
-                }
-            })
+                object : RecyclerItemClickListener.OnItemClickListener {
+                    override fun onItemClick(view: View, position: Int) {
+                        listener(position)
+                    }
+                })
         )
     }
 

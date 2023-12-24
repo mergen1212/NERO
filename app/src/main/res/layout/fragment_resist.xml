@@ -20,7 +20,7 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.started ? @string/stopButton : @string/startButton}"
+            android:text="@{viewModel.started ? @string/stopBtn : @string/startBtn}"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -128,6 +128,88 @@
             android:text=" Ohm"
             app:layout_constraintStart_toEndOf="@+id/resist_value_T4"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <ImageView
+            android:id="@+id/imagePerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            app:srcCompat="@drawable/person" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="80dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageSensor1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginRight="100dp"
+                    android:src="@{viewModel.started ? @drawable/plus : @drawable/minus}" />
+                <!--app:srcCompat="@drawable/minus"
+                app:srcCompat="@{viewModel.started ? @drawable/minus : @drawable/plus}"
+                @{viewModel.started ? @string/stopBtn : @string/startBtn}
+                -->
+
+                <ImageView
+                    android:id="@+id/imageSensor2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:src="@{viewModel.started ? @drawable/plus : @drawable/minus}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageSensor3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="100dp"
+                    android:src="@{viewModel.started ? @drawable/plus : @drawable/minus}" />
+
+                <ImageView
+                    android:id="@+id/imageSensor4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="100dp"
+                    android:src="@{viewModel.started ? @drawable/plus : @drawable/minus}" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_current_reconect"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:enabled="@{viewModel.hasDevice}"
+            android:text="@{viewModel.connected ? @string/disconnect : @string/connect}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imagePerson" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

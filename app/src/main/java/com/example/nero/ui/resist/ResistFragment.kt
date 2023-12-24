@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.nero.R
 import com.example.nero.databinding.FragmentResistBinding
+import com.example.nero.neuroimpl.BrainBitController
 
 class ResistFragment : Fragment() {
 
@@ -32,6 +33,9 @@ class ResistFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.button.setOnClickListener { viewModel.onResistClicked() }
+        binding.buttonCurrentReconect.setOnClickListener {
+            if(BrainBitController.hasDevice) viewModel.reconnect()
+        }
     }
 
     override fun onDestroyView() {
