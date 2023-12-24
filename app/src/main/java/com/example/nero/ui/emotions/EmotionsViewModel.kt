@@ -27,6 +27,9 @@ class EmotionsViewModel : ViewModel() {
     var relRelaxationText = ObservableField("Rel Relaxation: Waiting for calibration...")
     var relAttentionText = ObservableField("Rel Attention: Waiting for calibration...")
 
+    var relaxationNum = ObservableField(50)
+    var attentionNum = ObservableField(50)
+
     var alphaText = ObservableField("Alpha: Waiting for calibration...")
     var betaText = ObservableField("Beta: Waiting for calibration...")
     var gammaText = ObservableField("Gamma: Waiting for calibration...")
@@ -78,6 +81,9 @@ class EmotionsViewModel : ViewModel() {
         emotionalController.lastMindData = {
             relaxationText.set("Relaxation: " + String.format("%.2f", it.instRelaxation) + "%")
             attentionText.set("Attention: " + String.format("%.2f", it.instAttention) + "%")
+
+
+
             Log.d("cock", it.instRelaxation.toString())
             Log.d("cock1", it.instAttention.toString())
 

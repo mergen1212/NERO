@@ -44,7 +44,7 @@ class EmotionsFragment : Fragment() {
     }
 
     private fun setupPieChart() {
-        var pieChart = AnyChart.pie()
+        val pieChart = AnyChart.pie()
         val data: MutableList<DataEntry> = ArrayList()
         data.add(ValueDataEntry("Relaxation", 50))
         data.add(ValueDataEntry("Attention", 50))
